@@ -83,23 +83,23 @@ v1.1.0 업데이트 내용
 | --- | --- | --- |
 
 ## 📘 트러블슈팅
-### Realm을 이용하여 API 콜 횟수를 최대한 줄이기
+### 🔵 Realm을 이용하여 API 콜 횟수를 최대한 줄이기 🔵
 
-#### 문제 상황
+#### ❗문제 상황
 
-1. API 콜 횟수 제한
+**1. API 콜 횟수 제한**
 
 앱을 실행하면 환율 정보 API를 통해 환율 정보를 호출한다.
 다만, 사용하는 API는 API 통신 횟수가 일 1,000회로 제한되어 앱을 실행할 때 마다 API를 호출한다면 금방 콜 횟수의 제한의 걸린다.
 
-2. 평일만 사용 가능
+**2. 평일만 사용 가능**
 평일에만 환율 정보를 제공하기 때문에, 주말에는 환율 정보를 확인할 수 없다.
 
-<img width="1133" alt="스크린샷 2024-03-28 오후 6 01 47" src="https://github.com/DONOTINTO/DoT/assets/123792519/57fdf437-ff97-44ee-bcac-5478264c26f0">
+<img width="500" alt="스크린샷 2024-03-28 오후 6 01 47" src="https://github.com/DONOTINTO/DoT/assets/123792519/57fdf437-ff97-44ee-bcac-5478264c26f0">
 
-#### 해결 방법
+#### ❗해결 방법
 
-1. API 콜 횟수 제한
+**1. API 콜 횟수 제한**
 
 API 콜을 하기 앞서 몇가지 제한을 걸어두었는데, 다음과 같다.
 
@@ -114,32 +114,20 @@ API 콜을 하기 앞서 몇가지 제한을 걸어두었는데, 다음과 같�
 6. 오늘 날짜로 API를 호출하였다면 저장된 데이터 사용
 7. 11시가 지났다면 새로운 API 호출(단, 주말의 경우 가장 마지막 평일날짜로 API를 호출)
 
-<img width="593" alt="스크린샷 2024-03-28 오후 6 36 11" src="https://github.com/DONOTINTO/DoT/assets/123792519/fb6df791-6baf-4fe2-9404-009072392490">
+<img width="500" alt="스크린샷 2024-03-28 오후 6 36 11" src="https://github.com/DONOTINTO/DoT/assets/123792519/fb6df791-6baf-4fe2-9404-009072392490">
 
 
 위 7가지 제한을 통해 하루 최대 1회의 API콜만 하도록 하였다.   
 기존에는 한명의 유저가 하루의 모든 API 콜 횟수를 사용할 수도 있었지만, 이를 통해 최대 1000명의 유저까지 문제없이 사용할 수 있게 수정했다.
 
-2. 평일에만 사용 가능
+**2. 평일에만 사용 가능**
 
 평일에만 데이터를 넘겨주기 때문에, 주말 날짜로 API를 콜하는 것을 방지해주어야 했다.   
 이는 Calendar의 기능들을 적극 활용했다.
 
 오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크하였다.
 
-```swift
-var value = 0
-var date: Date = Date()
-var isWeekend = true
-        
-while isWeekend {
-	date = Calendar.current.date(byAdding: .day, value: value, to: Date()) ?? Date()
-        isWeekend = Calendar.current.isDateInWeekend(date)
-        value -= 1
-}
-```
-
-<img width="593" alt="스크린샷 2024-03-28 오후 6 37 14" src="https://github.com/DONOTINTO/DoT/assets/123792519/48a49d72-028f-4802-82dc-b8da8c6bf0c9">
+<img width="500" alt="스크린샷 2024-03-28 오후 6 37 14" src="https://github.com/DONOTINTO/DoT/assets/123792519/48a49d72-028f-4802-82dc-b8da8c6bf0c9">
 
 ---
 
