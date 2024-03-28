@@ -128,15 +128,15 @@ API 콜을 하기 앞서 몇가지 제한을 걸어두었는데, 다음과 같�
 오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크하였다.
 
 ```swift
-	var value = 0
-    var date: Date = Date()
-    var isWeekend = true
+var value = 0
+var date: Date = Date()
+var isWeekend = true
         
-    while isWeekend {
-        date = Calendar.current.date(byAdding: .day, value: value, to: Date()) ?? Date()
+while isWeekend {
+	date = Calendar.current.date(byAdding: .day, value: value, to: Date()) ?? Date()
         isWeekend = Calendar.current.isDateInWeekend(date)
         value -= 1
-    }
+}
 ```
 
 <img width="750" alt="스크린샷 2024-03-28 오후 6 37 14" src="https://github.com/DONOTINTO/DoT/assets/123792519/48a49d72-028f-4802-82dc-b8da8c6bf0c9">
