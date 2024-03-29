@@ -12,13 +12,17 @@ v1.1.0 업데이트 내용
 - 일부 UI의 폰트 사이즈가 조정되었습니다.
 - '상세 지출 내역'에 사진을 추가할 수 있는 UI가 추가되었습니다.
 ```
-
 <p align="center">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/bae7f678-e82e-400e-9f87-e21b38558161" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/060e8778-49a8-4934-a0a3-1ca563ede733" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/bb7f3e3f-5bbc-4e05-b610-5226f0ccda9c" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/7fd52e82-12d3-4a45-8563-5cd736cb4dc6" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/5d00ca7c-9d87-4f37-b411-f0d385e0353c" align="center" width="19.5%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/91d3630d-38c6-411a-bfce-616bffb79a9d" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/10f72608-ff9b-4465-8024-b345a1a9ae9a" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/badbdc0c-7792-4979-8078-06c6bd05ec07" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/ef754abf-6a6c-4c00-bd13-091633914899" align="center" width="24%">
+</p>
+<p align="center">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/218938d6-872f-41eb-ab01-84a35736e9af" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/163925b2-4cf0-428d-a537-4df1ac7b206b" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/e5305345-ffa9-4cb3-b5cd-3b098d09e395" align="center" width="24%">
+	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
 </p>
 
 
