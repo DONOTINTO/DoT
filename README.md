@@ -131,6 +131,51 @@ API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API�
 <img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
 ---
 
+### 🔵 PHPicker - Dispatch Group으로 순서보장하기 🔵
+
+#### ❗문제 상황
+
+PHPicke로 사진을 불러오면 해당 메소드(didFinishPicking)가 실행되면서 선택한 사진들의 배열 형태([PHPickerResult])로 정보가 넘어오게 된다.
+배열의 원소인 PHPickerResult에서 itemProvider 프로퍼티를 통해 다시 loadObject 메소드를 호출하면 이미지 데이터를 가져올 수 있다.
+
+[PHPickerResult] -> PHPickerResult -> itemProvider -> loadObject()
+
+문제는 loadObject 메소드가 비동기로 처리가 된다는 점이었다.
+그말인 즉슨 loadObject의 completionHandler 또한 순서를 보장하진 못한다는 의미였다.
+사진이 한장이 아니고, 순서에 맞게 사진 데이터를 저장하고 있기에 해당 문제를 해결해야 했다.
+
+1. 비동기로 처리가 되기 때문에 loadObject의 completionHandler 안에서 데이터를 저장하게 되면 순서가 보장되지 않는다.
+2. loadObject completionHandler안에서 데이터를 저장해서 밖에서 데이터에 접근하면 completion이 되기 이전이라 값이 저장되어 있지 않다.
+
+<img width="899" alt="스크린샷 2024-03-30 오전 1 05 12" src="https://github.com/DONOTINTO/DoT/assets/123792519/bf4007df-52a9-424f-9e82-4ca9fc7e81d8">
+
+#### ❗해결 방법
+
+위 방법을 해결하기 위해 Dispatch Group과 임시로 String 배열과 [String: Data]형태의 딕셔너리를 이용했다.
+
+1. 반복문돌며 Dispatch Group으로 관리 + 데이터 임시 저장
+
+우선 [PHPickerResult]를 반복문을 통해 PHPickerResult / itemProvider에 접근했다.
+이 후 첫번째로 한것은 Dispatch Group를 enter 시켜주었다. 반복문이 돌때마다 enter후 loadObject(비동기 처리)가 complete되면 leave를 해줄 예정이다.
+
+itemProvider엔 이미지 데이터 외에도 각 이미지별로 지니는 로컬 식별자인 assetIdentifier가 존재하는데,
+이를 우선 [String]에 순서대로 저장해주었다. (아직 loadObject 이전이기 때문에 순서가 보장된다)
+
+이 후 loadObject를 호출하여 complete가 되면 앞서 생성한 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장해주었고, dispatch는 leave를 해주었다.
+
+2. dispatchGroup.notify로 일괄 처리
+
+모든 비동기 처리가 Dispatch Group을 통해 끝났음을 전달받을 것이다.
+dispatchGroup.notify에서 해줄 일은 순서에 맞게 데이터를 저장하는 것이다.
+
+[String]은 assetIdentifier를 순서에 맞게 저장하고 있고, [String: Data]는 순서가 보장되지 않지만, 선택한 모든 이미지의 assetIdentifier와 Data를 가지고 있다.
+이를 통해 [String]의 배열을 순회하면서 [String: Data]에서 동일한 키값을 통해 Data를 순서에 맞게 가져와 저장했다.
+
+<img width="702" alt="스크린샷 2024-03-30 오전 1 22 08" src="https://github.com/DONOTINTO/DoT/assets/123792519/2f227d0c-d002-41cc-ab48-9991efa65f41">
+
+
+
+
 <!-- 1. AnyHashable
 2. 연관값을 통한 Section 추가
 3. DTO
