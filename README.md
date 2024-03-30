@@ -12,13 +12,17 @@ v1.1.0 업데이트 내용
 - 일부 UI의 폰트 사이즈가 조정되었습니다.
 - '상세 지출 내역'에 사진을 추가할 수 있는 UI가 추가되었습니다.
 ```
-
 <p align="center">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/bae7f678-e82e-400e-9f87-e21b38558161" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/060e8778-49a8-4934-a0a3-1ca563ede733" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/bb7f3e3f-5bbc-4e05-b610-5226f0ccda9c" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/7fd52e82-12d3-4a45-8563-5cd736cb4dc6" align="center" width="19.5%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/5d00ca7c-9d87-4f37-b411-f0d385e0353c" align="center" width="19.5%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/91d3630d-38c6-411a-bfce-616bffb79a9d" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/10f72608-ff9b-4465-8024-b345a1a9ae9a" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/badbdc0c-7792-4979-8078-06c6bd05ec07" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/ef754abf-6a6c-4c00-bd13-091633914899" align="center" width="24%">
+</p>
+<p align="center">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/218938d6-872f-41eb-ab01-84a35736e9af" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/163925b2-4cf0-428d-a537-4df1ac7b206b" align="center" width="24%">
+	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/e5305345-ffa9-4cb3-b5cd-3b098d09e395" align="center" width="24%">
+	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
 </p>
 
 
@@ -101,24 +105,25 @@ v1.1.0 업데이트 내용
 
 **1. API 콜 횟수 제한**
 
-API 콜을 하기 앞서 몇가지 제한을 걸어두었는데, 다음과 같다.
-
-1. API 호출한 환율 정보는 Realm에 저장한다.
-2. Realm에 저장한 데이터가 없고, 주말이라면 가장 마지막 평일의 날짜로 환율 API를 호출한다.
-3. Realm에 저장한 데이터가 없고, 11시가 지났다면 오늘을 포함하여 가장 마지막 평일 날짜로 환율 API를 호출한다.
-4. Realm에 저장한 데이터가 없고, 11시가 지나지 않았다면 오늘을 제외한 가장 마지막 평일 날짜로 환율 API를 호출한다.
-
-2~4번까지는 Realm에 저장한 데이터가 없기 때문에 무조건적인 API 콜이 진행되며, 5번부터는 Realm에 저장된 데이터가 있음을 보장한다.
-
-5. 11시가 지나지 않았다면 저장된 데이터 사용
-6. 오늘 날짜로 API를 호출하였다면 저장된 데이터 사용
-7. 11시가 지났다면 새로운 API 호출(단, 주말의 경우 가장 마지막 평일날짜로 API를 호출)
-
-<img width="500" alt="스크린샷 2024-03-28 오후 6 36 11" src="https://github.com/DONOTINTO/DoT/assets/123792519/fb6df791-6baf-4fe2-9404-009072392490">
+API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API를 콜하도록 했다.
 
 
-위 7가지 제한을 통해 하루 최대 1회의 API콜만 하도록 하였다.   
-기존에는 한명의 유저가 하루의 모든 API 콜 횟수를 사용할 수도 있었지만, 이를 통해 최대 1000명의 유저까지 문제없이 사용할 수 있게 수정했다.
+```
+1) 기존 데이터가 없을 경우
+1-1) 기존 데이터가 없고, 주말의 경우 			-> 마지막 평일 데이터 호출
+1-2) 기존 데이터가 없고, 평일 11시 이전의 경우 		-> 오늘을 제외한 마지막 평일 데이터 호출
+1-3) 기존 데이터가 없고, 평일 11시 이후의 경우 		-> 금일 데이터 호출
+
+2) 기존 데이터가 있을 경우
+2-1) 기존 데이터가 있고, 금일 데이터를 호출한 경우 	-> 기존 데이터 사용
+2-2) 기존 데이터가 있고, 주말의 경우 			-> 기존 데이터 사용
+2-3) 기존 데이터가 있고, 평일 11시 이전의 경우 		-> 기존 데이터 사용
+2-4) 기존 데이터가 있고, 평일 11시 이후의 경우 		-> 금일 데이터 호출   
+```
+
+<img width="500" alt="스크린샷 2024-03-29 오후 9 13 24" src="https://github.com/DONOTINTO/DoT/assets/123792519/54f0d34b-c286-4c15-8616-d1717e4a0dcd">
+
+위 7가지 경우를 통해 일일 최대 1회의 API콜만 하도록 하였다.   
 
 **2. 평일에만 사용 가능**
 
@@ -127,9 +132,53 @@ API 콜을 하기 앞서 몇가지 제한을 걸어두었는데, 다음과 같�
 
 오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크하였다.
 
-<img width="500" alt="스크린샷 2024-03-28 오후 6 37 14" src="https://github.com/DONOTINTO/DoT/assets/123792519/48a49d72-028f-4802-82dc-b8da8c6bf0c9">
-
+<img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
 ---
+
+### 🔵 PHPicker - Dispatch Group으로 순서보장하기 🔵
+
+#### ❗문제 상황
+
+PHPicke로 사진을 불러오면 해당 메소드(didFinishPicking)가 실행되면서 선택한 사진들의 배열 형태([PHPickerResult])로 정보가 넘어오게 된다.
+배열의 원소인 PHPickerResult에서 itemProvider 프로퍼티를 통해 다시 loadObject 메소드를 호출하면 이미지 데이터를 가져올 수 있다.
+
+[PHPickerResult] -> PHPickerResult -> itemProvider -> loadObject()
+
+문제는 loadObject 메소드가 비동기로 처리가 된다는 점이었다.
+그말인 즉슨 loadObject의 completionHandler 또한 순서를 보장하진 못한다는 의미였다.
+사진이 한장이 아니고, 순서에 맞게 사진 데이터를 저장하고 있기에 해당 문제를 해결해야 했다.
+
+1. 비동기로 처리가 되기 때문에 loadObject의 completionHandler 안에서 데이터를 저장하게 되면 순서가 보장되지 않는다.
+2. loadObject completionHandler안에서 데이터를 저장해서 밖에서 데이터에 접근하면 completion이 되기 이전이라 값이 저장되어 있지 않다.
+
+<img width="899" alt="스크린샷 2024-03-30 오전 1 05 12" src="https://github.com/DONOTINTO/DoT/assets/123792519/bf4007df-52a9-424f-9e82-4ca9fc7e81d8">
+
+#### ❗해결 방법
+
+위 방법을 해결하기 위해 Dispatch Group과 임시로 String 배열과 [String: Data]형태의 딕셔너리를 이용했다.
+
+1. 반복문돌며 Dispatch Group으로 관리 + 데이터 임시 저장
+
+우선 [PHPickerResult]를 반복문을 통해 PHPickerResult / itemProvider에 접근했다.
+이 후 첫번째로 한것은 Dispatch Group를 enter 시켜주었다. 반복문이 돌때마다 enter후 loadObject(비동기 처리)가 complete되면 leave를 해줄 예정이다.
+
+itemProvider엔 이미지 데이터 외에도 각 이미지별로 지니는 로컬 식별자인 assetIdentifier가 존재하는데,
+이를 우선 [String]에 순서대로 저장해주었다. (아직 loadObject 이전이기 때문에 순서가 보장된다)
+
+이 후 loadObject를 호출하여 complete가 되면 앞서 생성한 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장해주었고, dispatch는 leave를 해주었다.
+
+2. dispatchGroup.notify로 일괄 처리
+
+모든 비동기 처리가 Dispatch Group을 통해 끝났음을 전달받을 것이다.
+dispatchGroup.notify에서 해줄 일은 순서에 맞게 데이터를 저장하는 것이다.
+
+[String]은 assetIdentifier를 순서에 맞게 저장하고 있고, [String: Data]는 순서가 보장되지 않지만, 선택한 모든 이미지의 assetIdentifier와 Data를 가지고 있다.
+이를 통해 [String]의 배열을 순회하면서 [String: Data]에서 동일한 키값을 통해 Data를 순서에 맞게 가져와 저장했다.
+
+<img width="702" alt="스크린샷 2024-03-30 오전 1 22 08" src="https://github.com/DONOTINTO/DoT/assets/123792519/2f227d0c-d002-41cc-ab48-9991efa65f41">
+
+
+
 
 <!-- 1. AnyHashable
 2. 연관값을 통한 Section 추가
