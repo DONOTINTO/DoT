@@ -111,31 +111,40 @@ final class DashboardViewModel {
             // 기존 데이터 Fetch
             exchangeFetchListener.data = ()
             
-            // 기존 데이터가 비어있고, 11시가 지났다면, (오늘 포함 주말 판단) 환율 API 호출
-            if exchangeDatas.isEmpty, DateUtil.isOverTimeAt(11) {
-                callAPI(exceptToday: false)
-                return
-            }
-            
-            // 기존 데이터가 비어있고, 11시가 안지났다면, (오늘 제외 주말 판단) 환율 API 호출
-            if exchangeDatas.isEmpty, !DateUtil.isOverTimeAt(11) {
+            // MARK: 기존 데이터가 없을 경우
+            // 기존 데이터가 없고, 주말의 경우 -> 마지막 평일 데이터 호출
+            if exchangeDatas.isEmpty, DateUtil.isWeekend() {
                 callAPI(exceptToday: true)
                 return
             }
             
-            // 오늘 시간이 오전 11시가 지났는지 확인하여 지나지 않았으면 기존 데이터 사용
-            if DateUtil.isOverTimeAt(11) == false { return }
-            
-            // 금일 정보를 이미 호출해서 저장했다면 기존 데이터 그대로 사용
-            if isCalledToday() { return }
-            
-            // MARK: 주말엔 접속할때마다 호출해서 우선 막아둠, 검토가 필요함
-            if !exchangeDatas.isEmpty, DateUtil.isWeekend() {
+            // 기존 데이터가 없고, 평일 11시 이전의 경우 -> 오늘을 제외한 마지막 평일 데이터 호출
+            if exchangeDatas.isEmpty, !DateUtil.isWeekend(), !DateUtil.isOverTimeAt(11) {
+                callAPI(exceptToday: true)
                 return
             }
             
-            // 기존 데이터가 있으나, 오전 11시가 지났다면 (오늘 포함 주말 판단) 환율 API 호출
-            callAPI(exceptToday: false)
+            // 기존 데이터가 없고, 평일 11시 이후의 경우 -> 금일 데이터 호출
+            if exchangeDatas.isEmpty, !DateUtil.isWeekend(), DateUtil.isOverTimeAt(11) {
+                callAPI(exceptToday: false)
+                return
+            }
+            
+            // MARK: 기존 데이터가 있을 경우
+            // 기존 데이터가 있고, 금일 데이터를 호출한 경우 -> 기존 데이터 사용
+            if isCalledToday() { return }
+            
+            // 기존 데이터가 있고, 주말의 경우 -> 기존 데이터 사용
+            if DateUtil.isWeekend() { return }
+            
+            // 기존 데이터가 있고, 평일 11시 이전의 경우 -> 기존 데이터 사용
+            if !DateUtil.isWeekend(), !DateUtil.isOverTimeAt(11) { return }
+            
+            // 기존 데이터가 있고, 평일 11시 이후의 경우 -> 금일 데이터 호출
+            if !DateUtil.isWeekend(), DateUtil.isOverTimeAt(11) { 
+                callAPI(exceptToday: false)
+                return
+            }
         }
         
         // 마지막 업데이트 기준 날짜 저장
@@ -202,7 +211,7 @@ final class DashboardViewModel {
     private func callAPI(exceptToday: Bool) {
         
         // 오늘 포함 가장 마지막 평일 Date(String)로 설정
-        let date: String = exceptToday ? DateUtil.getLastWeekdayStringExceptToday() : DateUtil.getLastWeekdayString()
+        let date: String = DateUtil.getLastWeekdayString(exceptToday)
         let api = ExchangeAPI.AP01(date: date)
         
         // 환율 정보 업데이트 기준 날짜 저장

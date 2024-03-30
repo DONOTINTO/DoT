@@ -81,16 +81,16 @@ enum DateUtil {
         return df.date(from: dateStr)
     }
     
-    /// 오늘 포함. 마지막 평일 데이터를 반환 - Format ( yyyMMdd )
-    static func getLastWeekdayString() -> String {
+    /// 마지막 평일 데이터를 반환 - Format ( yyyMMdd )
+    static func getLastWeekdayString(_ exceptToday: Bool) -> String {
         
-        var value = 0
+        var value = exceptToday ? -1 : 0
         var date: Date = Date()
         var isWeekend = true
         
         while isWeekend {
             date = Calendar.current.date(byAdding: .day, value: value, to: Date()) ?? Date()
-            isWeekend = Calendar.current.isDateInWeekend(date)
+            isWeekend = self.isWeekend(date)
             value -= 1
         }
         
@@ -99,27 +99,10 @@ enum DateUtil {
         return result
     }
     
-    /// 오늘 제외. 마지막 평일 데이터를 반환 - Format ( yyyMMdd )
-    static func getLastWeekdayStringExceptToday() -> String {
+    /// 주말인지를 판별 -> 기본값 Date()
+    static func isWeekend(_ date: Date = Date()) -> Bool {
         
-        var value = 0
-        var date: Date = Date()
-        var isWeekend = true
-        
-        while isWeekend {
-            value -= 1
-            date = Calendar.current.date(byAdding: .day, value: value, to: Date()) ?? Date()
-            isWeekend = Calendar.current.isDateInWeekend(date)
-        }
-        
-        let result = getStringFromDate(date: date, format: "yyyyMMdd")
-        
-        return result
-    }
-    
-    static func isWeekend() -> Bool {
-        
-        return Calendar.current.isDateInWeekend(Date())
+        return Calendar.current.isDateInWeekend(date)
     }
     
     /// 입력된 hour을 넘겼는지 판별
