@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		AC4DA9912BB4034C0042AA46 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC4DA9902BB4034C0042AA46 /* Realm */; };
 		AC4DA9932BB4034C0042AA46 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC4DA9922BB4034C0042AA46 /* RealmSwift */; };
+		AC5A7AE12BEA0D3A00A13991 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC5A7AE02BEA0D3A00A13991 /* RxCocoa */; };
+		AC5A7AE32BEA0D3A00A13991 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC5A7AE22BEA0D3A00A13991 /* RxSwift */; };
+		AC5A7AE62BEA0D5200A13991 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = AC5A7AE52BEA0D5200A13991 /* Differentiator */; };
+		AC5A7AE82BEA0D5200A13991 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = AC5A7AE72BEA0D5200A13991 /* RxDataSources */; };
+		AC5A7AEA2BEA107500A13991 /* TripBookCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7AE92BEA107500A13991 /* TripBookCL.swift */; };
+		AC5A7AEC2BEA1DFC00A13991 /* TripBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A7AEB2BEA1DFC00A13991 /* TripBookViewModel.swift */; };
 		AC5FF4EF2BB03F3D00962363 /* PrivacyPolicyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5FF4EE2BB03F3D00962363 /* PrivacyPolicyCVC.swift */; };
 		AC5FF4F32BB1A25300962363 /* PhotoInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5FF4F22BB1A25300962363 /* PhotoInfoDTO.swift */; };
 		AC5FF4F52BB1A2B800962363 /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5FF4F42BB1A2B800962363 /* PhotoInfo.swift */; };
@@ -62,6 +68,8 @@
 		AC939C442BABC4900048956B /* EmptyOnComingCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC939C432BABC4900048956B /* EmptyOnComingCVC.swift */; };
 		AC939C472BAC1F050048956B /* ExpenseEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC939C462BAC1F050048956B /* ExpenseEditVC.swift */; };
 		AC939C492BAC1F0D0048956B /* ExpenseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC939C482BAC1F0D0048956B /* ExpenseEditView.swift */; };
+		AC9FD05F2BC4FC5800395FC2 /* TripBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FD05E2BC4FC5800395FC2 /* TripBookVC.swift */; };
+		AC9FD0612BC4FC8B00395FC2 /* TripBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FD0602BC4FC8B00395FC2 /* TripBookView.swift */; };
 		ACF5ACC22B99838600DBEF85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5ACC12B99838600DBEF85 /* AppDelegate.swift */; };
 		ACF5ACC42B99838600DBEF85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5ACC32B99838600DBEF85 /* SceneDelegate.swift */; };
 		ACF5ACC92B99838600DBEF85 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ACF5ACC82B99838600DBEF85 /* Base */; };
@@ -101,6 +109,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC5A7AE92BEA107500A13991 /* TripBookCL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripBookCL.swift; sourceTree = "<group>"; };
+		AC5A7AEB2BEA1DFC00A13991 /* TripBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripBookViewModel.swift; sourceTree = "<group>"; };
 		AC5FF4EE2BB03F3D00962363 /* PrivacyPolicyCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyCVC.swift; sourceTree = "<group>"; };
 		AC5FF4F22BB1A25300962363 /* PhotoInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoDTO.swift; sourceTree = "<group>"; };
 		AC5FF4F42BB1A2B800962363 /* PhotoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
@@ -152,6 +162,8 @@
 		AC939C432BABC4900048956B /* EmptyOnComingCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyOnComingCVC.swift; sourceTree = "<group>"; };
 		AC939C462BAC1F050048956B /* ExpenseEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditVC.swift; sourceTree = "<group>"; };
 		AC939C482BAC1F0D0048956B /* ExpenseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditView.swift; sourceTree = "<group>"; };
+		AC9FD05E2BC4FC5800395FC2 /* TripBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripBookVC.swift; sourceTree = "<group>"; };
+		AC9FD0602BC4FC8B00395FC2 /* TripBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripBookView.swift; sourceTree = "<group>"; };
 		ACF5ACBE2B99838600DBEF85 /* DoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF5ACC12B99838600DBEF85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF5ACC32B99838600DBEF85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,8 +210,12 @@
 				AC4DA9932BB4034C0042AA46 /* RealmSwift in Frameworks */,
 				AC6668B12BA2819200AED57A /* Alamofire in Frameworks */,
 				AC6DF5BA2BAC4DDE00EB224D /* TextFieldEffects in Frameworks */,
+				AC5A7AE82BEA0D5200A13991 /* RxDataSources in Frameworks */,
+				AC5A7AE12BEA0D3A00A13991 /* RxCocoa in Frameworks */,
 				ACF5AD132B9C25C900DBEF85 /* SnapKit in Frameworks */,
 				ACF5AD162B9C5A3F00DBEF85 /* FSCalendar in Frameworks */,
+				AC5A7AE32BEA0D3A00A13991 /* RxSwift in Frameworks */,
+				AC5A7AE62BEA0D5200A13991 /* Differentiator in Frameworks */,
 				AC4DA9912BB4034C0042AA46 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +334,15 @@
 			path = ExpenseEdit;
 			sourceTree = "<group>";
 		};
+		AC9FD0542BC4C8B000395FC2 /* TripBook */ = {
+			isa = PBXGroup;
+			children = (
+				AC9FD05E2BC4FC5800395FC2 /* TripBookVC.swift */,
+				AC9FD0602BC4FC8B00395FC2 /* TripBookView.swift */,
+			);
+			path = TripBook;
+			sourceTree = "<group>";
+		};
 		ACF5ACB52B99838600DBEF85 = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +432,7 @@
 				AC61A6522BA6B6C000EF14BD /* TripDashboardViewModel.swift */,
 				AC939C222BA82FEF0048956B /* ExpenseViewModel.swift */,
 				AC6DF5BB2BAC658500EB224D /* ExpenseEditViewModel.swift */,
+				AC5A7AEB2BEA1DFC00A13991 /* TripBookViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -414,6 +440,7 @@
 		ACF5ACFB2B9B078A00DBEF85 /* Controller&View */ = {
 			isa = PBXGroup;
 			children = (
+				AC9FD0542BC4C8B000395FC2 /* TripBook */,
 				AC939C452BAC1EE90048956B /* ExpenseEdit */,
 				AC61A65C2BA6E64D00EF14BD /* Expense */,
 				AC78E2E82BA439D3005B2E99 /* TripDashboard */,
@@ -448,6 +475,7 @@
 				AC61A6612BA6E9CF00EF14BD /* CategoryCL.swift */,
 				AC61A6672BA742F100EF14BD /* NumberPadCL.swift */,
 				AC6DF5BE2BAF03CE00EB224D /* PhotoCL.swift */,
+				AC5A7AE92BEA107500A13991 /* TripBookCL.swift */,
 			);
 			path = CompositionalLayout;
 			sourceTree = "<group>";
@@ -507,6 +535,10 @@
 				AC6DF5B92BAC4DDE00EB224D /* TextFieldEffects */,
 				AC4DA9902BB4034C0042AA46 /* Realm */,
 				AC4DA9922BB4034C0042AA46 /* RealmSwift */,
+				AC5A7AE02BEA0D3A00A13991 /* RxCocoa */,
+				AC5A7AE22BEA0D3A00A13991 /* RxSwift */,
+				AC5A7AE52BEA0D5200A13991 /* Differentiator */,
+				AC5A7AE72BEA0D5200A13991 /* RxDataSources */,
 			);
 			productName = DoT;
 			productReference = ACF5ACBE2B99838600DBEF85 /* DoT.app */;
@@ -542,6 +574,8 @@
 				AC6668AF2BA2819200AED57A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				AC6DF5B82BAC4DDE00EB224D /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				AC4DA98F2BB4034C0042AA46 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				AC5A7ADF2BEA0D3A00A13991 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				AC5A7AE42BEA0D5200A13991 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = ACF5ACBF2B99838600DBEF85 /* Products */;
 			projectDirPath = "";
@@ -597,6 +631,7 @@
 				AC939C422BAB48B60048956B /* EmptyCVC.swift in Sources */,
 				AC939C392BA9CD640048956B /* Exchange.swift in Sources */,
 				ACF5AD1B2B9C677600DBEF85 /* CalendarCustomCell.swift in Sources */,
+				AC9FD05F2BC4FC5800395FC2 /* TripBookVC.swift in Sources */,
 				ACF5ACF12B9AFF5000DBEF85 /* Consts.swift in Sources */,
 				AC6DF5BF2BAF03CE00EB224D /* PhotoCL.swift in Sources */,
 				ACF5AD002B9B07C700DBEF85 /* DashboardVC.swift in Sources */,
@@ -611,8 +646,10 @@
 				AC61A65E2BA6E67200EF14BD /* ExpenseVC.swift in Sources */,
 				ACF5AD072B9B0F3400DBEF85 /* Observable.swift in Sources */,
 				AC6668BF2BA291E100AED57A /* ExchangeAPIModel.swift in Sources */,
+				AC5A7AEC2BEA1DFC00A13991 /* TripBookViewModel.swift in Sources */,
 				ACF5AD242B9CB14E00DBEF85 /* CalendarView.swift in Sources */,
 				AC61A6572BA6C97400EF14BD /* TripDetailInfoDTO.swift in Sources */,
+				AC5A7AEA2BEA107500A13991 /* TripBookCL.swift in Sources */,
 				AC61A6532BA6B6C000EF14BD /* TripDashboardViewModel.swift in Sources */,
 				AC6668B92BA2835A00AED57A /* APIProtocol.swift in Sources */,
 				AC939C472BAC1F050048956B /* ExpenseEditVC.swift in Sources */,
@@ -627,6 +664,7 @@
 				AC6668B42BA281C300AED57A /* APIManager.swift in Sources */,
 				ACF5AD2C2B9D6F0700DBEF85 /* UILabel++.swift in Sources */,
 				ACF5ACF82B9B049200DBEF85 /* BaseViewController.swift in Sources */,
+				AC9FD0612BC4FC8B00395FC2 /* TripBookView.swift in Sources */,
 				ACF5ACF32B9B008F00DBEF85 /* FontManager.swift in Sources */,
 				ACF5AD222B9CB14300DBEF85 /* CalendarVC.swift in Sources */,
 				ACF5AD2A2B9D6DDE00DBEF85 /* UITextField++.swift in Sources */,
@@ -817,7 +855,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.donotinto.DoT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -851,7 +889,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.donotinto.DoT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -894,6 +932,22 @@
 			requirement = {
 				kind = exactVersion;
 				version = 10.48.0;
+			};
+		};
+		AC5A7ADF2BEA0D3A00A13991 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		AC5A7AE42BEA0D5200A13991 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
 			};
 		};
 		AC6668AF2BA2819200AED57A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -940,6 +994,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC4DA98F2BB4034C0042AA46 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		AC5A7AE02BEA0D3A00A13991 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC5A7ADF2BEA0D3A00A13991 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AC5A7AE22BEA0D3A00A13991 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC5A7ADF2BEA0D3A00A13991 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		AC5A7AE52BEA0D5200A13991 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC5A7AE42BEA0D5200A13991 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		AC5A7AE72BEA0D5200A13991 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC5A7AE42BEA0D5200A13991 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		AC6668B02BA2819200AED57A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

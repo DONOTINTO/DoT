@@ -14,15 +14,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // MARK: Tab bar appearance
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .clear
+        tabBarAppearance.shadowColor = .clear
+        // 스크롤 엣지가 닿았을 때 탭바 appearance settings
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        // 일반 탭바 appearance settings
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
         
-        let rootVC = DashboardViewController()
-        let navigationVC = UINavigationController(rootViewController: rootVC)
+        let dashboardVC = DashboardViewController()
+        let dashboradNaviVC = UINavigationController(rootViewController: dashboardVC)
+        
+        let tripBookVC = TripBookViewController()
+        let tripBookNaviVC = UINavigationController(rootViewController: tripBookVC)
+        
+        let tabVC = UITabBarController()
+        tabVC.setViewControllers([dashboradNaviVC, tripBookNaviVC], animated: true)
+        
+        tabVC.tabBar.items?[0].image = UIImage(systemName: "house")?.withTintColor(.justGray, renderingMode: .alwaysOriginal)
+        tabVC.tabBar.items?[0].selectedImage = UIImage(systemName: "house.fill")?.withTintColor(.blackWhite, renderingMode: .alwaysOriginal)
+        tabVC.tabBar.items?[1].image = UIImage.plane.withTintColor(.justGray, renderingMode: .alwaysOriginal)
+        tabVC.tabBar.items?[1].selectedImage = UIImage.plane.withTintColor(.blackWhite, renderingMode: .alwaysOriginal)
         
         self.window = window
-        self.window?.rootViewController = navigationVC
+        self.window?.rootViewController = tabVC
         self.window?.makeKeyAndVisible()
     }
 
