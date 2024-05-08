@@ -1,17 +1,33 @@
-## 📘 최신 업데이트 1.1.0 - 24.03.27
-```
-v1.1.0 업데이트 내용
-[주요]
-- '상세 지출 내역'에 사진을 추가하여 저장할 수 있습니다.
-- Realm SchemaVersion 0 -> 1
+# DoT - 여행 가계부
+[[DoT - 여행 가계부] 설치 바로가기](https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950)
 
-[버그 수정]
-- '상세 지출 내역'을 삭제 시 해당 일의 누적 지출 금액이 업데이트되지 않는 버그가 수정되었습니다.
+## 📘 앱 소개 및 기능
+> 출시 기간 : 2024.03.08 ~ 2024.03.24   
 
-[UI]
-- 일부 UI의 폰트 사이즈가 조정되었습니다.
-- '상세 지출 내역'에 사진을 추가할 수 있는 UI가 추가되었습니다.
-```
+
+여행에 필요한 최소한의 필수 정보만을 기록하는 여행 카드를 생성합니다.   
+여행 카드는 지출 별로 내역을 기록할 수 있고, 내역별로 사진이나 메모 등을 추가로 기록할 수 있습니다.   
+모든 내역은 수정이 가능하며 남은 예산 및 기간을 한눈에 확인 가능합니다.
+
+**Configuration** : 최소버전 16.0 / 세로모드 / 아이폰용 / 다크 모드 지원
+
+
+## 📘 핵심 기능
+**⭐️ 환율 정보** 
+ - 한국수출입은행에서 제공하는 환율 정보를 받아와 매일 아침 10시 기준으로 제공
+
+**⭐️ 여행 추가** 
+- 여행지 / 예산 / 통화 / 인원 / 기간을 설정하여 여행 카드 생성 가능
+
+**⭐️ 지출 기록** 
+- 여행 카드 내에서 예산 및 지출 기록 가능
+- 지출 합계 자동 계산 / 남은 예산 / 지출 카테고리 / 지출 금액 자동 기록 및 수정 가능
+
+**⭐️ 여행 기록** 
+- 지출 내역 별 모두 기록 및 상세 내용(지출 금액 / 사진 / 품목 / 메모) 추가 가능   
+
+---
+
 <p align="center">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/91d3630d-38c6-411a-bfce-616bffb79a9d" align="center" width="24%">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/10f72608-ff9b-4465-8024-b345a1a9ae9a" align="center" width="24%">
@@ -25,47 +41,33 @@ v1.1.0 업데이트 내용
 	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
 </p>
 
-
-## 📘 앱 소개 및 기능
-출시 기간 : 2024.03.08 ~ 2024.03.24
-
-- 여행에 필요한 예산 및 지출을 관리함과 동시에 여행 기록(메모, 사진, 위치)을 저장
-- **Configuration** : 최소버전 16.0 / 세로모드 / 아이폰용 / 라이트 모드
-- **v1.0 기능** : 환율 정보 / 예산 설정 / 지출 기록 / 여행 기록 저장 / 다크 모드
-- 업데이트 : 공유, 검색, 로그인, 위치 검색 및 저장, 사진 저장
+## 📘 라이브러리 및 버전
 
 
-## 📘 핵심 기능
-- **환율 정보 |** API 통신 일 별 환율 정보 및 최근 환율 비교
-- **여행 추가 |** 여행 별로 예산을 설정하고 지출을 관리
-- **지출 기록 |** 예산에서 지출 합계 계산, Realm을 통해 지출 금액, 사진, 품목, 메모 저장
-- **여행 기록 |** List로 지출 기록을 모두 저장
+| **라이브러리** | **버전** | **패키지 매니저** |
+| --- | --- | -- |
+| Alamofire | 5.9.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| FSCalendar | 2.8.4 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| Realm | 10.48.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| RxSwift | 6.7.1 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| RxDataSource | 5.0.2 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| SnapKit | 5.7.1 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+| TextFieldEffects | 1.7.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
+
+File - Pakages - Reset Package Caches 후 실행
 
 
 ## 📘 기술 스택
-**프레임워크**   
-- **UIKit(Code Base)**
 
-**라이브러리**
-- **Snapkit(codebase UI) |** AutoLayout을 관리하기 용이하고 코드의 가독성을 높임
-- **Realm |** 여행에 필요한 핵심 정보들을 Realm에 저장하여 로컬 기기에서 데이터를 다시 활용
-- **Alamofire |** 환율 정보를 API를 통해 데이터를 받아올 때 HTTP 네트워킹 작업을 단순화
-- **PhotosUI(PHPickerConfiguration) |** PHPicker를 통해 사진 활용 및 저장
-- **UICollectionCompositional Layout |** CollectionView의 layout을 유연하고 빠르게 구성 
-- **Diffable DataSource |** Index기반에서 Hashable한 데이터 기반으로 cell 구성의 안정성 향상
-
-**디자인 패턴**
-- **MVVM |** View, Model, ViewModel로 나누어 데이터와 비즈니스 로직은 model과 viewModel에서 처리하여 view가 비대해지는 것을 방지 및 의존성 관리
-
-**버전 관리**
+- **Realm**   
+- **Alamofire**
+- **PhotosUI(PHPickerConfiguration)**
+- **UICollectionCompositional Layout**
+- **Diffable DataSource**
+- **MVVM**
 - **Git / Github / Github Desktop**
 
-
-## 📘 API
-[한국수출입은행 Open API](https://www.koreaexim.go.kr/ir/HPHKIR020M01?apino=2&viewtype=C&searchselect=&searchword=)
-- 한국 수출입 은행 Open API를 통해 평일에 한정하여 환율 정보를 제공
-
-## 📘 데이터베이스 구조(Realm)
+## 📘 데이터베이스(Realm) 구조
 
 환율 정보(Exchange)
 
@@ -185,3 +187,28 @@ dispatchGroup.notify에서 해줄 일은 순서에 맞게 데이터를 저장하
 3. DTO
 4. PHPicker를 통한 사진 저장 방식
 5. realm 마이그레이션 -->
+
+## 📘 최신 업데이트 1.1.1 - 24.05.07
+```
+v1.1.1 업데이트 내용
+[주요]
+- 모든 여행 정보 카드를 확인할 수 있는 탭이 추가됩니다.
+
+[UI]
+- 종료된 여행, 예정인 여행, 진행중인 여행에 따라 카드의 색상이 구분됩니다.
+```
+
+## 📘 지난 업데이트 1.1.0 - 24.03.27
+```
+v1.1.0 업데이트 내용
+[주요]
+- '상세 지출 내역'에 사진을 추가하여 저장할 수 있습니다.
+- Realm SchemaVersion 0 -> 1
+
+[버그 수정]
+- '상세 지출 내역'을 삭제 시 해당 일의 누적 지출 금액이 업데이트되지 않는 버그가 수정되었습니다.
+
+[UI]
+- 일부 UI의 폰트 사이즈가 조정되었습니다.
+- '상세 지출 내역'에 사진을 추가할 수 있는 UI가 추가되었습니다.
+```
