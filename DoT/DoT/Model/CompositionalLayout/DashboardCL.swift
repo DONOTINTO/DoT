@@ -9,7 +9,6 @@ import UIKit
 
 enum DashboardCompositionalLayout: Int, CaseIterable {
     
-    // case plus
     case tripCard
     case onComing
     case exchangeRate

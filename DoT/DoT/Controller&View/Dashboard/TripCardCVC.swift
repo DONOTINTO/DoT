@@ -17,6 +17,12 @@ final class TripCardCollectionViewCell: BaseCollectionViewCell {
     private let budgetLabel = UILabel()
     private let remainBudgetLabel = UILabel()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        layoutView.backgroundColor = UIColor.pointBlue
+    }
+    
     override func configureHierarchy() {
         
         contentView.addSubview(layoutView)
@@ -62,8 +68,10 @@ final class TripCardCollectionViewCell: BaseCollectionViewCell {
     
     override func configureView() {
         
+        let randomAlpha = CGFloat.random(in: 0.5 ... 1)
+        layoutView.backgroundColor = UIColor.pointBlue
+        
         layoutView.layer.cornerRadius = 10
-        layoutView.backgroundColor = .pointBlue
         layoutView.layer.masksToBounds = true
         
         periodLabel.configure(text: "", fontSize: .small, fontScale: .Bold, color: .justWhite)
@@ -80,10 +88,10 @@ final class TripCardCollectionViewCell: BaseCollectionViewCell {
         
         guard let currency = Consts.Currency.currencyByName(name: data.currency) else { return }
         
+        let startGap = DateUtil.getDateGap(from: data.startDate, to: Date())
+        let endGap = DateUtil.getDateGap(from: Date(), to: data.endDate)
+        
         var dateText: String {
-            
-            let startGap = DateUtil.getDateGap(from: data.startDate, to: Date())
-            let endGap = DateUtil.getDateGap(from: Date(), to: data.endDate)
             
             if startGap == 0 {
                 return "첫째 날"
@@ -97,6 +105,17 @@ final class TripCardCollectionViewCell: BaseCollectionViewCell {
                 return "종료된 여행"
             }
             return ""
+        }
+        
+        // 진행중
+        if startGap == 0 || startGap > 0, endGap > 0 || endGap == 0 {
+            layoutView.backgroundColor = UIColor.pointBlue
+            // 예정
+        } else if startGap < 0 {
+            layoutView.backgroundColor = UIColor.systemIndigo
+            // 종료
+        } else if endGap < 0 {
+            layoutView.backgroundColor = UIColor.justGray
         }
         
         periodLabel.text = "\(dateText)"
