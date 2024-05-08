@@ -1,51 +1,42 @@
 # DoT - 여행 가계부
-[[DoT - 여행 가계부] 설치 바로가기](https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950)
-
-## 📘 앱 소개 및 기능
-> 출시 기간 : 2024.03.08 ~ 2024.03.24   
-
-
-여행에 필요한 최소한의 필수 정보만을 기록하는 여행 카드를 생성합니다.   
-여행 카드는 지출 별로 내역을 기록할 수 있고, 내역별로 사진이나 메모 등을 추가로 기록할 수 있습니다.   
-모든 내역은 수정이 가능하며 남은 예산 및 기간을 한눈에 확인 가능합니다.
-
-**Configuration** : 최소버전 16.0 / 세로모드 / 아이폰용 / 다크 모드 지원
-
-
-## 📘 핵심 기능
-**⭐️ 환율 정보** 
- - 한국수출입은행에서 제공하는 환율 정보를 받아와 매일 아침 10시 기준으로 제공
-
-**⭐️ 여행 추가** 
-- 여행지 / 예산 / 통화 / 인원 / 기간을 설정하여 여행 카드 생성 가능
-
-**⭐️ 지출 기록** 
-- 여행 카드 내에서 예산 및 지출 기록 가능
-- 지출 합계 자동 계산 / 남은 예산 / 지출 카테고리 / 지출 금액 자동 기록 및 수정 가능
-
-**⭐️ 여행 기록** 
-- 지출 내역 별 모두 기록 및 상세 내용(지출 금액 / 사진 / 품목 / 메모) 추가 가능   
-
----
 
 <p align="center">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/91d3630d-38c6-411a-bfce-616bffb79a9d" align="center" width="24%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/10f72608-ff9b-4465-8024-b345a1a9ae9a" align="center" width="24%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/badbdc0c-7792-4979-8078-06c6bd05ec07" align="center" width="24%">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/ef754abf-6a6c-4c00-bd13-091633914899" align="center" width="24%">
-</p>
-<p align="center">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/218938d6-872f-41eb-ab01-84a35736e9af" align="center" width="24%">
-	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/163925b2-4cf0-428d-a537-4df1ac7b206b" align="center" width="24%">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/e5305345-ffa9-4cb3-b5cd-3b098d09e395" align="center" width="24%">
 	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
 </p>
 
-## 📘 라이브러리 및 버전
+## 앱 다운로드
+> 애플 앱스토어: https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950
 
+
+## 앱 소개 및 기능
+
+> 출시 기간 : 2024.03.08 ~ 2024.03.24   
+최소버전 16.0 / 세로모드 / 아이폰 전용 / 다크 모드 지원
+
+DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요소들만 모아두었습니다. 우선 떠나는 여행별로 예산과 여행지, 통화, 예산, 기간을 설정하여 여행 카드를 생성할 수 있습니다.   
+생성된 여행 카드는 **홈 탭**과 1.1.1버전에서 추가된 **여행 카드 모음 탭**에서 확인할 수 있습니다. 여행 카드는 세부적인 지출과 예산을 관리하며 필요에 따라 사진, 메모 등을 추가하여 여행의 추억을 더욱 자세하게 기록할 수도 있습니다.
+
+## 주요 기능
+**환율 정보** 
+> 한국수출입은행에서 제공하는 환율 정보를 받아와 매일 아침 10시 기준으로 제공
+
+**여행 추가** 
+> 여행지 / 예산 / 통화 / 인원 / 기간을 설정하여 여행 카드 생성 가능
+
+**지출 기록** 
+> 여행 카드 내에서 예산 및 지출 기록 가능   
+지출 합계 자동 계산 / 남은 예산 / 지출 카테고리 / 지출 금액 자동 기록 및 수정 가능
+
+**여행 기록** 
+> 지출 내역 별 모두 기록 및 상세 내용(지출 금액 / 사진 / 품목 / 메모) 추가 가능   
+
+## 적용 라이브러리 및 버전
 
 | **라이브러리** | **버전** | **패키지 매니저** |
-| --- | --- | -- |
+| :---: | :---: | :---: |
 | Alamofire | 5.9.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
 | FSCalendar | 2.8.4 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
 | Realm | 10.48.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
@@ -54,12 +45,10 @@
 | SnapKit | 5.7.1 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
 | TextFieldEffects | 1.7.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
 
-File - Pakages - Reset Package Caches 후 실행
+## 기술 스택
+> DataBase
 
-
-## 📘 기술 스택
-
-- **Realm**   
+Realm
 - **Alamofire**
 - **PhotosUI(PHPickerConfiguration)**
 - **UICollectionCompositional Layout**
@@ -67,28 +56,28 @@ File - Pakages - Reset Package Caches 후 실행
 - **MVVM**
 - **Git / Github / Github Desktop**
 
-## 📘 데이터베이스(Realm) 구조
+## 데이터베이스(Realm) 구조
 
-환율 정보(Exchange)
+> 환율 정보(Exchange)
 
 | objectID(PK - String) | date(String) | currencyUnit(String) | exchangeRate(String) | exchangeName(String) |
-| --- | --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: | :---: |
 
-여행 정보(TripInfo)
+<br>
+
+> 여행 정보(TripInfo)
 
 | objectID (PK - String) | title(String) | place(String) | headCount(Int) | currency(String) | budget(String) | startDate(Date) | endDate(Date) | tripDetail(List<TripDetailInfo>) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
-여행 세부 기록(TripDetailInfo)
+<br>
+
+> 여행 세부 기록(TripDetailInfo)
 
 | objectID(PK - String) | expense(Double) | category(Enum) | photos(List<PhotoInfoDTO>) | memo(String?) | place(String?) | expenseDate(Date) | tripInfo(LinkingObject<TripInfo>) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
-맵 정보(PhotoInfo)
-| objectId(PK - Object ID) | filname(String) | data(Data) |
-| --- | --- | --- |
-
-## 📘 트러블슈팅
+## 트러블슈팅
 ### 🔵 Realm을 이용하여 API 콜 횟수를 최대한 줄이기 🔵
 
 #### ❗문제 상황
