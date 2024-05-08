@@ -46,13 +46,12 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 | TextFieldEffects | 1.7.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
 
 ## 기술 스택
-> DataBase
-
-Realm
+- **Realm**
+	- 데이터를 교환하는 모델(RealmObject)과 실제 화면에 사용되는 데이터(Diffable Datasource)를 분리하여 RealmObject의 마이그레이션에서 오는 오류를 최소화
 - **Alamofire**
-- **PhotosUI(PHPickerConfiguration)**
-- **UICollectionCompositional Layout**
-- **Diffable DataSource**
+	- Router패턴과 Generic을 사용하여 API의 확장성을 고려
+- **UICollectionCompositional Layout / Diffable DataSource**
+	- 직관적인 UI 변화를 보여주는 Diffable DataSource를 통해 사용자의 UX 고려
 - **MVVM**
 - **Git / Github / Github Desktop**
 
