@@ -5,11 +5,12 @@
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/ef754abf-6a6c-4c00-bd13-091633914899" align="center" width="24%">
 	<img src = "https://github.com/DONOTINTO/DoT/assets/123792519/e5305345-ffa9-4cb3-b5cd-3b098d09e395" align="center" width="24%">
 	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
-</p>
+</p> <br>
 
 ## 앱 다운로드
-> 애플 앱스토어: https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950
+> 애플 앱스토어: https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950 
 
+<br>
 
 ## 앱 소개 및 기능
 
@@ -18,6 +19,8 @@
 
 DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요소들만 모아두었습니다. 우선 떠나는 여행별로 예산과 여행지, 통화, 예산, 기간을 설정하여 여행 카드를 생성할 수 있습니다.   
 생성된 여행 카드는 **홈 탭**과 1.1.1버전에서 추가된 **여행 카드 모음 탭**에서 확인할 수 있습니다. 여행 카드는 세부적인 지출과 예산을 관리하며 필요에 따라 사진, 메모 등을 추가하여 여행의 추억을 더욱 자세하게 기록할 수도 있습니다.
+
+<br>
 
 ## 주요 기능
 ### 환율 정보
@@ -32,6 +35,8 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 ### 여행 기록 
 > 지출 내역 별 모두 기록 및 상세 내용(지출 금액 / 사진 / 품목 / 메모) 추가 가능   
+
+<br>
 
 ## 기술 스택
 
@@ -53,7 +58,7 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 | RxDataSource | 5.0.2 |
 | SnapKit | 5.7.1 |
 | TextFieldEffects | 1.7.0 |
-</details> <br>
+</details>
 
 - `Realm`의 데이터를 교환하는 모델(`RealmObject`)과 실제 화면에 사용되는 데이터(`Diffable Datasource`)를 분리하여 RealmObject의 `마이그레이션`에서 오는 오류를 최소화
 
@@ -63,6 +68,7 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 - `RxSwift` 사용 전 `커스텀 Observable`과 `Input Ouput 패턴` 통해 Action과 비즈니스 로직을 분리하여 `MVVM`을 적용 및 이해 
 
+<br>
 
 ## 데이터베이스(Realm) 구조
 
@@ -87,6 +93,7 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 | objectID(PK - String) | expense(Double) | category(Enum) | photos(List<PhotoInfoDTO>) | memo(String?) | place(String?) | expenseDate(Date) | tripInfo(LinkingObject<TripInfo>) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
+<br>
 
 ## 회고
 
@@ -125,7 +132,7 @@ VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와
 
 이는 다시 RxSwift에서 Input Output 패턴으로 변경할 계획이다.
 
-
+<br>
 
 ## 트러블슈팅
 ### 🔵 Realm을 이용하여 API 콜 횟수를 최대한 줄이기 🔵
