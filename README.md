@@ -20,40 +20,49 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 생성된 여행 카드는 **홈 탭**과 1.1.1버전에서 추가된 **여행 카드 모음 탭**에서 확인할 수 있습니다. 여행 카드는 세부적인 지출과 예산을 관리하며 필요에 따라 사진, 메모 등을 추가하여 여행의 추억을 더욱 자세하게 기록할 수도 있습니다.
 
 ## 주요 기능
-**환율 정보** 
+### 환율 정보
 > 한국수출입은행에서 제공하는 환율 정보를 받아와 매일 아침 10시 기준으로 제공
 
-**여행 추가** 
+### 여행 추가 
 > 여행지 / 예산 / 통화 / 인원 / 기간을 설정하여 여행 카드 생성 가능
 
-**지출 기록** 
+### 지출 기록
 > 여행 카드 내에서 예산 및 지출 기록 가능   
 지출 합계 자동 계산 / 남은 예산 / 지출 카테고리 / 지출 금액 자동 기록 및 수정 가능
 
-**여행 기록** 
+### 여행 기록 
 > 지출 내역 별 모두 기록 및 상세 내용(지출 금액 / 사진 / 품목 / 메모) 추가 가능   
 
-## 적용 라이브러리 및 버전
-
-| **라이브러리** | **버전** | **패키지 매니저** |
-| :---: | :---: | :---: |
-| Alamofire | 5.9.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| FSCalendar | 2.8.4 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| Realm | 10.48.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| RxSwift | 6.7.1 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| RxDataSource | 5.0.2 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| SnapKit | 5.7.1 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-| TextFieldEffects | 1.7.0 | <a href="https://github.com/apple/swift-package-manager" alt="RxSwift on Swift Package Manager" title="RxSwift on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible" /></a> |
-
 ## 기술 스택
-- **Realm**
-	- 데이터를 교환하는 모델(RealmObject)과 실제 화면에 사용되는 데이터(Diffable Datasource)를 분리하여 RealmObject의 마이그레이션에서 오는 오류를 최소화
-- **Alamofire**
-	- Router패턴과 Generic을 사용하여 API의 확장성을 고려
-- **UICollectionCompositional Layout / Diffable DataSource**
-	- 직관적인 UI 변화를 보여주는 Diffable DataSource를 통해 사용자의 UX 고려
-- **MVVM**
-- **Git / Github / Github Desktop**
+
+`UIKit(CodeBase)` <br>
+`Realm` / `Alamofire` / `FSCalendar` / `SnapKit` <br>
+`RxSwift` / `RxDataSource` <sub> v 1.1.1 이 후 적용 </sub> <br>
+`UICollectionCompositional Layout` / `Diffable DataSource` / `PHPicker` <br> 
+`MVVM` / `Input Output` / `Router` <br>
+`Git` / `Github` / `Figma` <br>
+<details>
+<summary> 라이브러리 버전 </summary>
+
+| **라이브러리** | **버전** |
+| :---: | :---: |
+| Alamofire | 5.9.0 |
+| FSCalendar | 2.8.4 |
+| Realm | 10.48.0 |
+| RxSwift | 6.7.1 |
+| RxDataSource | 5.0.2 |
+| SnapKit | 5.7.1 |
+| TextFieldEffects | 1.7.0 |
+</details> <br>
+
+- `Realm`의 데이터를 교환하는 모델(`RealmObject`)과 실제 화면에 사용되는 데이터(`Diffable Datasource`)를 분리하여 RealmObject의 `마이그레이션`에서 오는 오류를 최소화
+
+- `Alamofire`에서 `Router패턴`과 `Generic`을 사용하여 API와 여러 데이터 모델에도 적용할 수 있도록 `확장성` 고려
+
+- `SnapShot`을 통해 직관적인 UI 변화 애니메이션을 보여주는 Diffable DataSource를 통해 사용자의 `UX`를 고려
+
+- `RxSwift` 사용 전 `커스텀 Observable`과 `Input Ouput 패턴` 통해 Action과 비즈니스 로직을 분리하여 `MVVM`을 적용 및 이해 
+
 
 ## 데이터베이스(Realm) 구조
 
@@ -69,12 +78,54 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 | objectID (PK - String) | title(String) | place(String) | headCount(Int) | currency(String) | budget(String) | startDate(Date) | endDate(Date) | tripDetail(List<TripDetailInfo>) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
+여행 카드 생성 시 `여행 정보` RealmObject를 사용한다. 이는 List로 `여행 세부 기록`을 담을 수 있어서 각 여행 카드 별로 각각의 `여행 세부 기록`을 담을 수 있도록 했다.
+
 <br>
 
 > 여행 세부 기록(TripDetailInfo)
 
 | objectID(PK - String) | expense(Double) | category(Enum) | photos(List<PhotoInfoDTO>) | memo(String?) | place(String?) | expenseDate(Date) | tripInfo(LinkingObject<TripInfo>) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
+
+## 회고
+
+#### ✏️ 서비스 지향적 네트워크 에러 핸들링
+
+Alamofire를 사용하여 request를 하게되는 경우, response의 result는 Result<T, AFError>를 넘겨준다.
+completionHandler에 자연스럽게 Result<T, AFError> 형태로 파라미터를 받았는데, AFError자체가 서비스에서 사용하는 API 에러와 알맞게 대응하기 어려웠다.
+
+다만, Result 자체가 Alamofire에서 제공하는 것으로 생각해 커스텀 에러로 변경하지 않았다.
+
+<img width="521" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/97e48a32-e0b3-4718-ae60-c2148eb9b9e9">
+
+의외로 Result를 타고 들어가면 바로 Error타입이기만 하면 된다는 걸 확인했다.<br>
+서비스에서 사용하는 에러 코드는 한정적이기 때문에 Status Code와 원시값을 이용한 Enum에 Error를 채택하면 서비스에 맞춘 커스텀 에러를 생성하여 적용 가능할 것 같다.
+
+#### ✏️ 커스텀 Observable로 RxSwift 맛보기
+RxSwift를 바로 적용하기 보다는 커스텀 Observable을 만들어서 구독과 이벤트 전달에 대한 이해할 수 있었다.
+
+커스텀 Observable을 사용해보니 MVVM의 구분이 명확해졌는데, 이번 프로젝트에서는 인터페이스에 대한 유저의 이벤트나 특정 View Life Cycle 이벤트를 ViewModel로 넘기고, ViewModel에서는 이에 대한 비즈니스 로직을 작성했다.
+
+> 예시 코드
+
+버튼 클릭 이벤트를 ViewModel로 전달
+
+<img width="454" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/b0b1c0ec-d406-42bd-afe4-81168a9c0c9d">
+
+이벤트를 전달받으면 ViewModel에서 비즈니스 로직 처리 및 결과 전달
+
+<img width="1188" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/3f7f70d2-6b33-44f0-a61c-c193a415e256">
+
+VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와 관련된 로직을 처리
+
+<img width="582" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/5aaf3e51-d3e2-4fac-ae55-cc497aabcb79">
+
+이 과정에서 ViewModel로 이벤트를 전달받을 Input과 비즈니스 로직을 처리한 결과를 이벤트로 방출할 Output을 구분지을 수 있었다.
+
+이는 다시 RxSwift에서 Input Output 패턴으로 변경할 계획이다.
+
+
 
 ## 트러블슈팅
 ### 🔵 Realm을 이용하여 API 콜 횟수를 최대한 줄이기 🔵
