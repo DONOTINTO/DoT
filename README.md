@@ -135,7 +135,7 @@ VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와
 <br>
 
 ## 트러블슈팅
-### 🔵 Realm을 이용하여 API 콜 횟수를 최대한 줄이기 🔵
+### ✏️ Realm을 이용하여 API 콜 횟수를 최대한 줄이기
 
 #### ❗문제 상황
 
@@ -183,7 +183,7 @@ API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API�
 <img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
 ---
 
-### 🔵 PHPicker - Dispatch Group으로 순서보장하기 🔵
+### ✏️ PHPicker - Dispatch Group으로 순서보장하기
 
 #### ❗문제 상황
 
