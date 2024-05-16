@@ -95,45 +95,6 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 <br>
 
-## 회고
-
-#### ✏️ 서비스 지향적 네트워크 에러 핸들링
-
-Alamofire를 사용하여 request를 하게되는 경우, response의 result는 Result<T, AFError>를 넘겨준다.
-completionHandler에 자연스럽게 Result<T, AFError> 형태로 파라미터를 받았는데, AFError자체가 서비스에서 사용하는 API 에러와 알맞게 대응하기 어려웠다.
-
-다만, Result 자체가 Alamofire에서 제공하는 것으로 생각해 커스텀 에러로 변경하지 않았다.
-
-<img width="521" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/97e48a32-e0b3-4718-ae60-c2148eb9b9e9">
-
-의외로 Result를 타고 들어가면 바로 Error타입이기만 하면 된다는 걸 확인했다.<br>
-서비스에서 사용하는 에러 코드는 한정적이기 때문에 Status Code와 원시값을 이용한 Enum에 Error를 채택하면 서비스에 맞춘 커스텀 에러를 생성하여 적용 가능할 것 같다.
-
-#### ✏️ 커스텀 Observable로 RxSwift 맛보기
-RxSwift를 바로 적용하기 보다는 커스텀 Observable을 만들어서 구독과 이벤트 전달에 대한 이해할 수 있었다.
-
-커스텀 Observable을 사용해보니 MVVM의 구분이 명확해졌는데, 이번 프로젝트에서는 인터페이스에 대한 유저의 이벤트나 특정 View Life Cycle 이벤트를 ViewModel로 넘기고, ViewModel에서는 이에 대한 비즈니스 로직을 작성했다.
-
-> 예시 코드
-
-버튼 클릭 이벤트를 ViewModel로 전달
-
-<img width="454" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/b0b1c0ec-d406-42bd-afe4-81168a9c0c9d">
-
-이벤트를 전달받으면 ViewModel에서 비즈니스 로직 처리 및 결과 전달
-
-<img width="1188" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/3f7f70d2-6b33-44f0-a61c-c193a415e256">
-
-VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와 관련된 로직을 처리
-
-<img width="582" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/5aaf3e51-d3e2-4fac-ae55-cc497aabcb79">
-
-이 과정에서 ViewModel로 이벤트를 전달받을 Input과 비즈니스 로직을 처리한 결과를 이벤트로 방출할 Output을 구분지을 수 있었다.
-
-이는 다시 RxSwift에서 Input Output 패턴으로 변경할 계획이다.
-
-<br>
-
 ## 트러블슈팅
 ### ✏️ Realm을 이용하여 API 콜 횟수를 최대한 줄이기
 
@@ -141,11 +102,11 @@ VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와
 
 **1. API 콜 횟수 제한**
 
-앱을 실행하면 환율 정보 API를 통해 환율 정보를 호출한다.
-다만, 사용하는 API는 API 통신 횟수가 일 1,000회로 제한되어 앱을 실행할 때 마다 API를 호출한다면 금방 콜 횟수의 제한의 걸린다.
+앱을 실행하면 환율 정보 API를 통해 환율 정보를 호출합니다.
+다만, 사용하는 API는 API 통신 횟수가 일 1,000회로 제한되어 앱을 실행할 때 마다 API를 호출한다면 금방 콜 횟수의 제한의 걸리는 문제가 있습니다.
 
 **2. 평일만 사용 가능**
-평일에만 환율 정보를 제공하기 때문에, 주말에는 환율 정보를 확인할 수 없다.
+평일에만 환율 정보를 제공하기 때문에, 주말에는 환율 정보를 확인할 수 없습니다.
 
 <img width="500" alt="스크린샷 2024-03-28 오후 6 01 47" src="https://github.com/DONOTINTO/DoT/assets/123792519/57fdf437-ff97-44ee-bcac-5478264c26f0">
 
@@ -153,7 +114,7 @@ VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와
 
 **1. API 콜 횟수 제한**
 
-API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API를 콜하도록 했다.
+API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API를 콜하도록 했습니다.
 
 
 ```
@@ -171,60 +132,91 @@ API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API�
 
 <img width="500" alt="스크린샷 2024-03-29 오후 9 13 24" src="https://github.com/DONOTINTO/DoT/assets/123792519/54f0d34b-c286-4c15-8616-d1717e4a0dcd">
 
-위 7가지 경우를 통해 일일 최대 1회의 API콜만 하도록 하였다.   
+위 7가지 경우를 통해 일일 최대 1회의 API콜만 하도록 변경했습니다.  
 
 **2. 평일에만 사용 가능**
 
-평일에만 데이터를 넘겨주기 때문에, 주말 날짜로 API를 콜하는 것을 방지해주어야 했다.   
-이는 Calendar의 기능들을 적극 활용했다.
+평일에만 데이터를 넘겨주기 때문에, 주말 날짜로 API를 콜하는 것을 방지해주어야 했습니다.   
+이는 Calendar의 기능들을 적극 활용했습니다.
 
-오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크하였다.
+오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크했습니다.
 
 <img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
 ---
 
 ### ✏️ PHPicker - Dispatch Group으로 순서보장하기
 
-#### ❗문제 상황
-
-PHPicke로 사진을 불러오면 해당 메소드(didFinishPicking)가 실행되면서 선택한 사진들의 배열 형태([PHPickerResult])로 정보가 넘어오게 된다.
-배열의 원소인 PHPickerResult에서 itemProvider 프로퍼티를 통해 다시 loadObject 메소드를 호출하면 이미지 데이터를 가져올 수 있다.
+PHPicker로 사진을 불러오면 해당 메소드(didFinishPicking)가 실행되면서 선택한 사진들의 배열 형태([PHPickerResult])로 정보가 넘어오게 됩니다.
+배열의 원소인 PHPickerResult에서 itemProvider 프로퍼티를 통해 다시 loadObject 메소드를 호출하면 이미지 데이터를 가져올 수 있습니다.
 
 [PHPickerResult] -> PHPickerResult -> itemProvider -> loadObject()
 
-문제는 loadObject 메소드가 비동기로 처리가 된다는 점이었다.
-그말인 즉슨 loadObject의 completionHandler 또한 순서를 보장하진 못한다는 의미였다.
-사진이 한장이 아니고, 순서에 맞게 사진 데이터를 저장하고 있기에 해당 문제를 해결해야 했다.
+#### ❗문제 상황
 
-1. 비동기로 처리가 되기 때문에 loadObject의 completionHandler 안에서 데이터를 저장하게 되면 순서가 보장되지 않는다.
-2. loadObject completionHandler안에서 데이터를 저장해서 밖에서 데이터에 접근하면 completion이 되기 이전이라 값이 저장되어 있지 않다.
+1. loadObject 메소드는 비동기로 처리가 되기 때문에 loadObject의 completionHandler 안에서 데이터를 저장하게 되면 순서가 보장되지 않음
+2. loadObject completionHandler안에서 데이터를 저장해서 밖에서 데이터에 접근하면 completion이 되기 이전이라 값이 저장되어 있지 않음
 
 <img width="899" alt="스크린샷 2024-03-30 오전 1 05 12" src="https://github.com/DONOTINTO/DoT/assets/123792519/bf4007df-52a9-424f-9e82-4ca9fc7e81d8">
 
 #### ❗해결 방법
 
-위 방법을 해결하기 위해 Dispatch Group과 임시로 String 배열과 [String: Data]형태의 딕셔너리를 이용했다.
+위 방법을 해결하기 위해 Dispatch Group과 임시로 String 배열과 [String: Data]형태의 딕셔너리를 이용했습니다.
 
 1. 반복문돌며 Dispatch Group으로 관리 + 데이터 임시 저장
 
-우선 [PHPickerResult]를 반복문을 통해 PHPickerResult / itemProvider에 접근했다.
-이 후 첫번째로 한것은 Dispatch Group를 enter 시켜주었다. 반복문이 돌때마다 enter후 loadObject(비동기 처리)가 complete되면 leave를 해줄 예정이다.
+우선 [PHPickerResult]를 반복문을 통해 PHPickerResult / itemProvider에 접근했습니다.
+이 후 첫번째로 한것은 Dispatch Group를 enter 시켜주었고, 반복문이 돌때마다 enter후 loadObject(비동기 처리)가 complete되면 leave를 해주게 됩니다.
 
 itemProvider엔 이미지 데이터 외에도 각 이미지별로 지니는 로컬 식별자인 assetIdentifier가 존재하는데,
-이를 우선 [String]에 순서대로 저장해주었다. (아직 loadObject 이전이기 때문에 순서가 보장된다)
+이를 우선 [String]에 순서대로 저장해주었습니다. (아직 loadObject 이전이기 때문에 순서가 보장됩니다.)
 
-이 후 loadObject를 호출하여 complete가 되면 앞서 생성한 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장해주었고, dispatch는 leave를 해주었다.
+이 후 loadObject를 호출하여 complete가 되면 앞서 생성한 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장해주었고, dispatch는 leave를 해주었습니다.
 
 2. dispatchGroup.notify로 일괄 처리
 
-모든 비동기 처리가 Dispatch Group을 통해 끝났음을 전달받을 것이다.
-dispatchGroup.notify에서 해줄 일은 순서에 맞게 데이터를 저장하는 것이다.
+모든 비동기 처리가 Dispatch Group을 통해 끝났음을 전달받으면 dispatchGroup.notify에서 순서에 맞게 데이터를 저장합니다.
 
-[String]은 assetIdentifier를 순서에 맞게 저장하고 있고, [String: Data]는 순서가 보장되지 않지만, 선택한 모든 이미지의 assetIdentifier와 Data를 가지고 있다.
-이를 통해 [String]의 배열을 순회하면서 [String: Data]에서 동일한 키값을 통해 Data를 순서에 맞게 가져와 저장했다.
+[String]은 assetIdentifier를 순서에 맞게 저장하고 있고, [String: Data]는 순서가 보장되지 않지만, 선택한 모든 이미지의 assetIdentifier와 Data를 가지고 있습니다.
+이를 통해 [String]의 배열을 순회하면서 [String: Data]에서 동일한 키값을 통해 Data를 순서에 맞게 가져와 저장했습니다.
 
 <img width="702" alt="스크린샷 2024-03-30 오전 1 22 08" src="https://github.com/DONOTINTO/DoT/assets/123792519/2f227d0c-d002-41cc-ab48-9991efa65f41">
 
+## 회고
+
+#### ✏️ 서비스 지향적 네트워크 에러 핸들링
+
+Alamofire를 사용하여 request를 하게되는 경우, response의 result는 Result<T, AFError>를 넘겨줍니다.
+completionHandler에 자연스럽게 Result<T, AFError> 형태로 파라미터를 받고 AFError자체로 서비스에서 사용하는 API 에러에 대응할 생각이었지만 AFError가 서비스에 그대로 사용하는건 적합하지 않다고 판단했습니다.
+
+<img width="521" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/97e48a32-e0b3-4718-ae60-c2148eb9b9e9">
+
+이는, status code와 enum의 원시값을 이용한 커스텀 Error Type을 만든다면 서비스만을 위한 에러핸들링이 가능할 것 같습니다.
+추가적으로 에러 별 대응 방법 및 에러핸들링 코드의 재사용성을 높이는 방법에 대한 고민이 필요해보입니다.
+
+#### ✏️ 커스텀 Observable로 RxSwift 맛보기
+RxSwift를 바로 적용하기 보다는 커스텀 Observable을 만들어서 구독과 이벤트 전달에 대한 이해할 수 있었습니다.
+
+커스텀 Observable을 사용해보니 MVVM의 구분이 명확해졌는데, 이번 프로젝트에서는 인터페이스에 대한 유저의 이벤트나 특정 View Life Cycle 이벤트를 ViewModel로 넘기고, ViewModel에서는 이에 대한 비즈니스 로직을 작성했습니다.
+
+> 예시 코드
+
+버튼 클릭 이벤트를 ViewModel로 전달
+
+<img width="454" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/b0b1c0ec-d406-42bd-afe4-81168a9c0c9d">
+
+이벤트를 전달받으면 ViewModel에서 비즈니스 로직 처리 및 결과 전달
+
+<img width="1188" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/3f7f70d2-6b33-44f0-a61c-c193a415e256">
+
+VC에서 결과에 대한 이벤트 전달이 발생하면 그에 대한 View와 관련된 로직을 처리
+
+<img width="582" alt="image" src="https://github.com/DONOTINTO/DoT/assets/123792519/5aaf3e51-d3e2-4fac-ae55-cc497aabcb79">
+
+이 과정에서 ViewModel로 이벤트를 전달받을 Input과 비즈니스 로직을 처리한 결과를 이벤트로 방출할 Output을 구분짓는 연습이 됐습니다.
+
+이는 다시 RxSwift에서 Input Output 패턴으로 변경할 계획입니다.
+
+<br>
 
 
 
