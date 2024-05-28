@@ -15,10 +15,8 @@
 ## 앱 소개 및 기능
 
 > 출시 기간 : 2024.03.08 ~ 2024.03.24   
-최소버전 16.0 / 세로모드 / 아이폰 전용 / 다크 모드 지원
 
-DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요소들만 모아두었습니다. 우선 떠나는 여행별로 예산과 여행지, 통화, 예산, 기간을 설정하여 여행 카드를 생성할 수 있습니다.   
-생성된 여행 카드는 **홈 탭**과 1.1.1버전에서 추가된 **여행 카드 모음 탭**에서 확인할 수 있습니다. 여행 카드는 세부적인 지출과 예산을 관리하며 필요에 따라 사진, 메모 등을 추가하여 여행의 추억을 더욱 자세하게 기록할 수도 있습니다.
+DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요소들만 모아두었습니다. 여행별로 세부적인 지출과 예산을 관리하며 필요에 따라 사진, 메모를 추가하여 여행의 추억을 더욱 자세하게 기록할 수도 있습니다.
 
 <br>
 
@@ -60,13 +58,13 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 | TextFieldEffects | 1.7.0 |
 </details>
 
-- `Realm`의 데이터를 교환하는 모델(`RealmObject`)과 실제 화면에 사용되는 데이터(`Diffable Datasource`)를 분리하여 RealmObject의 `마이그레이션`에서 오는 오류를 최소화
+- `Realm`의 데이터를 교환하는 모델(`RealmObject`)과 실제 화면에 사용되는 데이터(`Diffable Datasource`)를 분리하여 RealmObject의 `마이그레이션`에서 오는 사이드이펙트 최소화
 
 - `Alamofire`에서 `Router패턴`과 `Generic`을 사용하여 API와 여러 데이터 모델에도 적용할 수 있도록 `확장성` 고려
 
 - `SnapShot`을 통해 직관적인 UI 변화 애니메이션을 보여주는 Diffable DataSource를 통해 사용자의 `UX`를 고려
 
-- `RxSwift` 사용 전 `커스텀 Observable`과 `Input Ouput 패턴` 통해 Action과 비즈니스 로직을 분리하여 `MVVM`을 적용 및 이해 
+- `RxSwift` 사용 전 `커스텀 Observable`과 `Input Ouput 패턴` 통해 Action과 비즈니스 로직을 분리하여 `MVVM`을 적용 및 이해
 
 <br>
 
@@ -102,11 +100,11 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 **1. API 콜 횟수 제한**
 
-앱을 실행하면 환율 정보 API를 통해 환율 정보를 호출합니다.
-다만, 사용하는 API는 API 통신 횟수가 일 1,000회로 제한되어 앱을 실행할 때 마다 API를 호출한다면 금방 콜 횟수의 제한의 걸리는 문제가 있습니다.
+앱을 실행하면 API를 통해 환율 정보를 호출합니다.
+다만, API 통신 횟수가 일 1,000회로 제한되어 유저 당 하루 API 콜 횟수를 줄여야만 했습니다.
 
 **2. 평일만 사용 가능**
-평일에만 환율 정보를 제공하기 때문에, 주말에는 환율 정보를 확인할 수 없습니다.
+평일 환율 정보만을 제공하기 때문에, 주말에는 환율 정보를 확인할 수 없습니다.
 
 <img width="500" alt="스크린샷 2024-03-28 오후 6 01 47" src="https://github.com/DONOTINTO/DoT/assets/123792519/57fdf437-ff97-44ee-bcac-5478264c26f0">
 
@@ -114,7 +112,7 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 **1. API 콜 횟수 제한**
 
-API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API를 콜하도록 했습니다.
+경우의 수를 나누어 필요 시점에만 API를 사용했습니다.
 
 
 ```
@@ -136,45 +134,43 @@ API 콜을 하기 앞서 경우의 수를 나누어 필요한 시점에만 API�
 
 **2. 평일에만 사용 가능**
 
-평일에만 데이터를 넘겨주기 때문에, 주말 날짜로 API를 콜하는 것을 방지해주어야 했습니다.   
+주말의 경우 API 콜을 방지해주어야 했습니다.   
 이는 Calendar의 기능들을 적극 활용했습니다.
 
-오늘 날짜를 기준으로 평일이 나올때 까지 날짜를 하루씩 변경하면서 평일임을 체크했습니다.
+금일 기준으로 평일이 나올때까지 날짜를 하루씩 변경하면서 마지막 평일 날짜를 확인했습니다.
 
 <img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
 ---
 
 ### ✏️ PHPicker - Dispatch Group으로 순서보장하기
 
-PHPicker로 사진을 불러오면 해당 메소드(didFinishPicking)가 실행되면서 선택한 사진들의 배열 형태([PHPickerResult])로 정보가 넘어오게 됩니다.
-배열의 원소인 PHPickerResult에서 itemProvider 프로퍼티를 통해 다시 loadObject 메소드를 호출하면 이미지 데이터를 가져올 수 있습니다.
+PHPicker로 사진을 불러오면 선택한 사진들이 배열 형태`[PHPickerResult]`로 정보가 넘어오게 됩니다.
+PHPickerResult의 `itemProvider.loadObject()`를 통해 이미지 데이터를 가져올 수 있습니다.
 
-[PHPickerResult] -> PHPickerResult -> itemProvider -> loadObject()
+> [PHPickerResult] -> PHPickerResult -> itemProvider -> loadObject()
 
 #### ❗문제 상황
 
-1. loadObject 메소드는 비동기로 처리가 되기 때문에 loadObject의 completionHandler 안에서 데이터를 저장하게 되면 순서가 보장되지 않음
-2. loadObject completionHandler안에서 데이터를 저장해서 밖에서 데이터에 접근하면 completion이 되기 이전이라 값이 저장되어 있지 않음
+1. loadObject 메소드는 비동기이기 때문에 completionHandler 안에서는 순서가 보장되지 않음
+2. loadObject completion 이 후를 체크할 수 없음
 
 <img width="899" alt="스크린샷 2024-03-30 오전 1 05 12" src="https://github.com/DONOTINTO/DoT/assets/123792519/bf4007df-52a9-424f-9e82-4ca9fc7e81d8">
 
 #### ❗해결 방법
 
-위 방법을 해결하기 위해 Dispatch Group과 임시로 String 배열과 [String: Data]형태의 딕셔너리를 이용했습니다.
+위 방법을 해결하기 위해 Dispatch Group과 임시 String 배열과 [String: Data]형태의 딕셔너리를 이용했습니다.
 
-1. 반복문돌며 Dispatch Group으로 관리 + 데이터 임시 저장
+1. 반복문돌며 `Dispatch Group`으로 관리 + 데이터 임시 저장
 
-우선 [PHPickerResult]를 반복문을 통해 PHPickerResult / itemProvider에 접근했습니다.
-이 후 첫번째로 한것은 Dispatch Group를 enter 시켜주었고, 반복문이 돌때마다 enter후 loadObject(비동기 처리)가 complete되면 leave를 해주게 됩니다.
+[PHPickerResult]를 반복문을 통해 PHPickerResult의 itemProvider에 접근 후, `Dispatch Group를 enter`시켜주고 `loadObject(비동기 처리)에서 complete되면 leave`를 해주게 됩니다.
 
-itemProvider엔 이미지 데이터 외에도 각 이미지별로 지니는 로컬 식별자인 assetIdentifier가 존재하는데,
-이를 우선 [String]에 순서대로 저장해주었습니다. (아직 loadObject 이전이기 때문에 순서가 보장됩니다.)
+추후 순서를 확인시켜줄 itemProvider의 이미지 로컬 식별자인 `assetIdentifier를 [String]에 순서대로 저장`해주었습니다. (아직 loadObject 이전이기 때문에 순서가 보장됩니다.)
 
-이 후 loadObject를 호출하여 complete가 되면 앞서 생성한 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장해주었고, dispatch는 leave를 해주었습니다.
+loadObject의 `completeHandler`에서 [String: Data]딕셔너리 키 값에 assetIdentifier를 값에는 이미지 데이터를 저장하고 dispatch는 leave를 해주었습니다.
 
-2. dispatchGroup.notify로 일괄 처리
+2. `DispatchGroup.notify`로 일괄 처리
 
-모든 비동기 처리가 Dispatch Group을 통해 끝났음을 전달받으면 dispatchGroup.notify에서 순서에 맞게 데이터를 저장합니다.
+모든 loadObject의 `completeHandler`가 종료되면 Dispatch Group을 통해 끝났음을 전달받게 되고 `dispatchGroup.notify`에서 순서에 맞게 데이터를 저장시켜줍니다.
 
 [String]은 assetIdentifier를 순서에 맞게 저장하고 있고, [String: Data]는 순서가 보장되지 않지만, 선택한 모든 이미지의 assetIdentifier와 Data를 가지고 있습니다.
 이를 통해 [String]의 배열을 순회하면서 [String: Data]에서 동일한 키값을 통해 Data를 순서에 맞게 가져와 저장했습니다.
