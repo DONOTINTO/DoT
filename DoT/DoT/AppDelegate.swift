@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = Realm.Configuration(schemaVersion: 1) {
             migration, oldSchemaVersion in
             
+            
             // schemaVersion: 1
             if oldSchemaVersion < 1 {
                 // Trip Detail Info DTO -> photo(String?) 변수 삭제
