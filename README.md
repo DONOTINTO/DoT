@@ -139,7 +139,8 @@ DoT - 여행 가계부는 여행에 있어 필수적이면서 기본적인 요�
 
 금일 기준으로 평일이 나올때까지 날짜를 하루씩 변경하면서 마지막 평일 날짜를 확인했습니다.
 
-<img width="500" alt="스크린샷 2024-03-29 오후 9 44 03" src="https://github.com/DONOTINTO/DoT/assets/123792519/914321d9-4030-4fbf-8559-0827f051232b">
+<img width="500" alt="스크린샷 2024-03-28 오후 6 37 14" src="https://github.com/DONOTINTO/DoT/assets/123792519/48a49d72-028f-4802-82dc-b8da8c6bf0c9">
+
 ---
 
 ### ✏️ PHPicker - Dispatch Group으로 순서보장하기
