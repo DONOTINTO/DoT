@@ -14,16 +14,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // MARK: Tab bar appearance
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = UIColor.pointBlue
+        // 스크롤 엣지가 닿았을 때 탭바 appearance settings
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        // 일반 탭바 appearance settings
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
         
-        let rootVC = DashboardViewController()
-        let navigationVC = UINavigationController(rootViewController: rootVC)
+        let tabVC = makeTabVC()
         
         self.window = window
-        self.window?.rootViewController = navigationVC
+        self.window?.rootViewController = tabVC
         self.window?.makeKeyAndVisible()
+    }
+    
+    func makeTabVC() -> UITabBarController {
+        
+        let tabVC = UITabBarController()
+        let dashboardVC = DashboardViewController()
+        let dashboardNaviVC = UINavigationController(rootViewController: dashboardVC)
+        dashboardNaviVC.tabBarItem = makeTabBarItem(item: "house", selected: "house.fill")
+        
+        let tripCardVC = TripCardViewController()
+        let tripCardNaviVC = UINavigationController(rootViewController: tripCardVC)
+        tripCardNaviVC.tabBarItem = makeTabBarItem(item: "shippingbox", selected: "shippingbox.fill")
+        
+        tabVC.setViewControllers([dashboardNaviVC, tripCardNaviVC], animated: false)
+        
+        return tabVC
+    }
+    
+    func makeTabBarItem(item: String, selected: String) -> UITabBarItem {
+        
+        let configuration = UIImage.SymbolConfiguration(scale: .medium)
+        
+        let item = UIImage(systemName: item)?.withTintColor(.white, renderingMode: .alwaysOriginal).withConfiguration(configuration)
+        let seletedItem = UIImage(systemName: selected)?.withTintColor(.white, renderingMode: .alwaysOriginal).withConfiguration(configuration)
+        let tabItem = UITabBarItem(title: nil, image: item, selectedImage: seletedItem)
+        
+        return tabItem
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
