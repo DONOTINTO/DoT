@@ -45,8 +45,10 @@ final class DashboardViewModel {
             
             let tripInfoData = realmManager.fetch(TripInfoDTO.self).map { $0.translate() }
             
-            tripInfoDatas = getInProgressTrip(data: tripInfoData)
-            onComingDatas = getOnComingTrip(data: tripInfoData)
+            // tripInfoDatas = getInProgressTrip(data: tripInfoData)
+            // onComingDatas = getOnComingTrip(data: tripInfoData)
+            
+            tripInfoDatas = sortedTripData(data: tripInfoData)
             
             tripInfoFetchCompleteListener.data = ()
         }
@@ -154,6 +156,15 @@ final class DashboardViewModel {
             
             outputLastUpdateDateListener.data = DateUtil.getStringFromDate(date: date, format: "yy년 MM월 dd일 기준")
         }
+    }
+    
+    private func sortedTripData(data: [TripInfo]) -> [TripInfo] {
+        
+        let sortedData = data.sorted {
+            $0.endDate > $1.endDate
+        }
+        
+        return sortedData
     }
     
     /// 현재 진행중인 Trip Data를 반환

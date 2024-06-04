@@ -123,9 +123,7 @@ final class DashboardViewController: BaseViewController<DashboardView> {
             
             switch section {
             case .tripCard:
-                supplementaryView.configure("진행중인 여행")
-            case .onComing:
-                supplementaryView.configure("예정된 여행")
+                supplementaryView.configure("여행 카드")
             default: break
             }
         }
@@ -166,23 +164,23 @@ final class DashboardViewController: BaseViewController<DashboardView> {
                     
                 }
                 
-            case .onComing:
-                
-                if onComingDatas.isEmpty {
-                    
-                    let cell = collectionView.dequeueConfiguredReusableCell(using: emptyOnComingSectionRegistration, for: indexPath, item: itemIdentifier)
-                    
-                    return cell
-                    
-                } else {
-                    
-                    guard let item: TripInfo = itemIdentifier as? TripInfo else { return nil }
-                    
-                    let cell = collectionView.dequeueConfiguredReusableCell(using: onComingSectionRegistration, for: indexPath, item: item)
-                    
-                    return cell
-                    
-                }
+            // case .onComing:
+            //     
+            //     if onComingDatas.isEmpty {
+            //         
+            //         let cell = collectionView.dequeueConfiguredReusableCell(using: emptyOnComingSectionRegistration, for: indexPath, item: itemIdentifier)
+            //         
+            //         return cell
+            //         
+            //     } else {
+            //         
+            //         guard let item: TripInfo = itemIdentifier as? TripInfo else { return nil }
+            //         
+            //         let cell = collectionView.dequeueConfiguredReusableCell(using: onComingSectionRegistration, for: indexPath, item: item)
+            //         
+            //         return cell
+            //         
+            //     }
                 
             case .exchangeRate:
                 
@@ -304,12 +302,12 @@ extension DashboardViewController {
             snapshot.appendItems(tripInfoDatas, toSection: .tripCard)
         }
         
-        if onComingDatas.isEmpty {
-            snapshot.appendItems(["OnComing"], toSection: .onComing)
-        } else {
-            snapshot.deleteItems(["OnComing"])
-            snapshot.appendItems(onComingDatas, toSection: .onComing)
-        }
+        // if onComingDatas.isEmpty {
+        //     snapshot.appendItems(["OnComing"], toSection: .onComing)
+        // } else {
+        //     snapshot.deleteItems(["OnComing"])
+        //     snapshot.appendItems(onComingDatas, toSection: .onComing)
+        // }
         
         snapshot.appendItems(exchangeDatas, toSection: .exchangeRate)
         snapshot.appendItems(["privacyPolicy"], toSection: .privacyPolicy)

@@ -22,8 +22,6 @@
 		AC61A6642BA6EAB600EF14BD /* CategoryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC61A6632BA6EAB600EF14BD /* CategoryCVC.swift */; };
 		AC61A6662BA73CA400EF14BD /* NumberPadCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC61A6652BA73CA400EF14BD /* NumberPadCVC.swift */; };
 		AC61A6682BA742F100EF14BD /* NumberPadCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC61A6672BA742F100EF14BD /* NumberPadCL.swift */; };
-		AC65FAE72C0DB1E5005C4236 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAE62C0DB1E5005C4236 /* TripCardView.swift */; };
-		AC65FAE92C0DB1F0005C4236 /* TripCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65FAE82C0DB1F0005C4236 /* TripCardViewController.swift */; };
 		AC66687F2B9DA74C00AED57A /* CreateTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC66687E2B9DA74C00AED57A /* CreateTripViewModel.swift */; };
 		AC6668892B9EFAF200AED57A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6668882B9EFAF200AED57A /* RealmManager.swift */; };
 		AC66688B2B9F00FD00AED57A /* TripInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC66688A2B9F00FD00AED57A /* TripInfoDTO.swift */; };
@@ -116,8 +114,6 @@
 		AC61A6632BA6EAB600EF14BD /* CategoryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCVC.swift; sourceTree = "<group>"; };
 		AC61A6652BA73CA400EF14BD /* NumberPadCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadCVC.swift; sourceTree = "<group>"; };
 		AC61A6672BA742F100EF14BD /* NumberPadCL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadCL.swift; sourceTree = "<group>"; };
-		AC65FAE62C0DB1E5005C4236 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
-		AC65FAE82C0DB1F0005C4236 /* TripCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardViewController.swift; sourceTree = "<group>"; };
 		AC66687E2B9DA74C00AED57A /* CreateTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewModel.swift; sourceTree = "<group>"; };
 		AC6668882B9EFAF200AED57A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		AC66688A2B9F00FD00AED57A /* TripInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoDTO.swift; sourceTree = "<group>"; };
@@ -220,15 +216,6 @@
 				AC61A6652BA73CA400EF14BD /* NumberPadCVC.swift */,
 			);
 			path = Expense;
-			sourceTree = "<group>";
-		};
-		AC65FAE52C0DB176005C4236 /* TripCard */ = {
-			isa = PBXGroup;
-			children = (
-				AC65FAE82C0DB1F0005C4236 /* TripCardViewController.swift */,
-				AC65FAE62C0DB1E5005C4236 /* TripCardView.swift */,
-			);
-			path = TripCard;
 			sourceTree = "<group>";
 		};
 		AC6668822B9EF9FF00AED57A /* Realm */ = {
@@ -427,7 +414,6 @@
 		ACF5ACFB2B9B078A00DBEF85 /* Controller&View */ = {
 			isa = PBXGroup;
 			children = (
-				AC65FAE52C0DB176005C4236 /* TripCard */,
 				AC939C452BAC1EE90048956B /* ExpenseEdit */,
 				AC61A65C2BA6E64D00EF14BD /* Expense */,
 				AC78E2E82BA439D3005B2E99 /* TripDashboard */,
@@ -616,7 +602,6 @@
 				ACF5AD002B9B07C700DBEF85 /* DashboardVC.swift in Sources */,
 				AC66687F2B9DA74C00AED57A /* CreateTripViewModel.swift in Sources */,
 				ACF5ACFE2B9B07B800DBEF85 /* DashboardView.swift in Sources */,
-				AC65FAE72C0DB1E5005C4236 /* TripCardView.swift in Sources */,
 				AC6668892B9EFAF200AED57A /* RealmManager.swift in Sources */,
 				ACF5ACC22B99838600DBEF85 /* AppDelegate.swift in Sources */,
 				AC78E2EA2BA43BF5005B2E99 /* TripDashboardVC.swift in Sources */,
@@ -652,7 +637,6 @@
 				AC66688F2B9F194700AED57A /* TripCardCVC.swift in Sources */,
 				ACF5AD192B9C650F00DBEF85 /* NSObject++.swift in Sources */,
 				ACF5AD262B9CBC9400DBEF85 /* CalendarType.swift in Sources */,
-				AC65FAE92C0DB1F0005C4236 /* TripCardViewController.swift in Sources */,
 				ACF5AD1D2B9C6B1C00DBEF85 /* CalendarViewModel.swift in Sources */,
 				ACF5AD0B2B9B112600DBEF85 /* PlusCVC.swift in Sources */,
 				AC61A6662BA73CA400EF14BD /* NumberPadCVC.swift in Sources */,

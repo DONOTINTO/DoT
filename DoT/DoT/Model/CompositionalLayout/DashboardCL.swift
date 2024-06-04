@@ -11,7 +11,7 @@ enum DashboardCompositionalLayout: Int, CaseIterable {
     
     // case plus
     case tripCard
-    case onComing
+    // case onComing
     case exchangeRate
     case privacyPolicy
     
@@ -22,7 +22,7 @@ enum DashboardCompositionalLayout: Int, CaseIterable {
             let section = DashboardCompositionalLayout(rawValue: section)
             
             switch section {
-            case .tripCard, .onComing:
+            case .tripCard:
                 return createTripCard()
             case .exchangeRate:
                 return createExchangeRate()
