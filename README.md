@@ -7,9 +7,6 @@
 	<img src="https://github.com/DONOTINTO/DoT/assets/123792519/08f040ee-d058-4e04-8d5b-262d677d7ced" align="center" width="24%">
 </p> <br>
 
-## 앱 다운로드
-> 애플 앱스토어: https://apps.apple.com/kr/app/dot-%EC%97%AC%ED%96%89-%EA%B0%80%EA%B3%84%EB%B6%80/id6479473950 
-
 <br>
 
 ## 앱 소개 및 기능
